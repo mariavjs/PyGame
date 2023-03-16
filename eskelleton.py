@@ -25,6 +25,8 @@ class HEAD(pygame.sprite.Sprite):
         if self.state == 1:
             self.rect.x += self.speedx  
             self.rect.y += self.speedy
+
+    
         # if self.state == 2:
         #     c = self.rect.center
         #     self.image = self.images[self.index_image]
