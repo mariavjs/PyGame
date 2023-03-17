@@ -5,18 +5,35 @@ from config import *
 from assets import *
 
 
+
+def build_snake(self, assets, image):
+    self.image = assets[image]
+    self.mask = pygame.mask.from_surface(self.image)
+    self.rect = self.image.get_rect()
+    self.speedx = 0
+    self.speedy = 0
+
+
+
+class BODY(pygame.sprite.Sprite):
+    def __init__(self, assets, center, neutro=True):
+
+        pygame.sprite.Sprite.__init__(self)
+        build_snake(self=self, assets=assets, image=BODY_IMG)
+        self.rect.center = center
+        self.neutro = neutro
+    
+    def update(self):
+        pass     
+
 class HEAD(pygame.sprite.Sprite):
     def __init__(self, assets):
         
         pygame.sprite.Sprite.__init__(self)
+        build_snake(self=self, assets=assets, image=HEAD_IMG)
         self.images = assets[DEAD_IMG]
-        self.image = assets[HEAD_IMG]
-        self.mask = pygame.mask.from_surface(self.image)
-        self.rect = self.image.get_rect()
         self.rect.centerx = WIDTH/2
         self.rect.centery = HEIGHT/2
-        self.speedx = 0
-        self.speedy = 0
         self.size = 0
         self.state = 1
         self.index_image = 0
@@ -25,6 +42,8 @@ class HEAD(pygame.sprite.Sprite):
         if self.state == 1:
             self.rect.x += self.speedx  
             self.rect.y += self.speedy
+
+    
         # if self.state == 2:
         #     c = self.rect.center
         #     self.image = self.images[self.index_image]
@@ -51,6 +70,8 @@ class HEAD(pygame.sprite.Sprite):
         pass        '''
 
 
+
+
 class RAT(pygame.sprite.Sprite):
     def __init__(self, assets, x, y):
         
@@ -68,22 +89,6 @@ class RAT(pygame.sprite.Sprite):
 
     def update(self):
         pass
-
-class BODY(pygame.sprite.Sprite):
-    def __init__(self, assets, center, neutro=True):
-
-        pygame.sprite.Sprite.__init__(self)
-
-        self.image = assets[BODY_IMG]
-        self.mask = pygame.mask.from_surface(self.image)
-        self.rect = self.image.get_rect()
-        self.speedx = 0
-        self.speedy = 0
-        self.rect.center = center
-        self.neutro = neutro
-    
-    def update(self):
-        pass     
 
 class WALLS(pygame.sprite.Sprite):
     def __init__(self, assets, posx, posy):

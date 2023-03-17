@@ -56,14 +56,14 @@ def pagina_jogo(WINDOW):
 
 
     clock = pygame.time.Clock()
-    VEL = 2
+    VEL = 3
     NIVEL = 1
     score = 0 
     placar = 0
     count = 1
 
 
-    assets[BATIDA_SOUND].play(loops=-1)
+    #assets[BATIDA_SOUND].play(loops=-1)
     pygame.mixer.music.set_volume(0.4)
 
     game = True
@@ -135,7 +135,7 @@ def pagina_jogo(WINDOW):
                 score += 1
 
                 if score%10 == 0:
-                    VEL += 0.05
+                    VEL += 0.0
                     NIVEL += 1
                 
                     
@@ -149,7 +149,7 @@ def pagina_jogo(WINDOW):
             player.state = 2
             exp = Gameover(CENTER, player, assets)
             all_sprites.add(exp)
-            assets[BATIDA_SOUND].stop()
+            #assets[BATIDA_SOUND].stop()
             assets[DIE_SOUND].play()
 
 
@@ -160,7 +160,7 @@ def pagina_jogo(WINDOW):
             player.state = 2
             exp = Gameover(CENTER, player, assets)
             all_sprites.add(exp)
-            assets[BATIDA_SOUND].stop()
+            #assets[BATIDA_SOUND].stop()
             assets[DIE_SOUND].play()
             
         
